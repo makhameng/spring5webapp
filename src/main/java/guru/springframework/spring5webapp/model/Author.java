@@ -3,7 +3,7 @@ package guru.springframework.spring5webapp.model;
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 
 @Entity
 public class Author{
@@ -15,9 +15,14 @@ public class Author{
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = new TreeSet<>();
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
+    }
+
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Author(String firstName, String lastName, Set<Book> books) {
